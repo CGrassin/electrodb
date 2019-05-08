@@ -2,6 +2,8 @@
 
 ElectroDB is an offline and open source **Android app** that makes looking for pinouts and datasheets a child's play!
 
+![Promo picture](http://charleslabs.fr/projects/20171014_ElectroDB/img.jpg)
+
 In this repo, there are the source codes for:
 * The Kicad library JSON scrapper,
 * The app itself (Android Studio project).
