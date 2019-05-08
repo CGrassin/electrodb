@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainActivity_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    tools:context="fr.charleslabs.electrodb.MainActivity">
+
+    <!-- Top banner (Padding Bottom to handle logo) -->
+    <RelativeLayout
+        android:id="@+id/mainActivity_header"
+        android:layout_above="@+id/mainActivity_formWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:animateLayoutChanges="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="#FFF"
+            android:text="@string/app_name"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingBottom="35dp"/>
+    </RelativeLayout>
+
+    <!-- Strut to place views (height defined in percent) -->
+    <fr.charleslabs.electrodb.utils.RelativeLayoutStrut
+        android:id="@+id/mainActivity_strut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!-- Bottom of screen portion -->
+    <RelativeLayout
+        android:id="@+id/mainActivity_formWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/mainActivity_strut"
+        android:background="#DDD">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/mainActivity_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:padding="10dp"
+            android:layout_centerVertical="true"
+            android:animateLayoutChanges="true"
+            app:cardElevation="2dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:id="@+id/mainActivity_searchField"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/mainActivity_componentName"
+                        android:maxLines="1"
+                        android:inputType="textNoSuggestions"
+                        android:imeOptions="actionSearch"/>
+                    <ImageButton
+                        android:id="@+id/mainActivity_searchFieldSubmit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_weight="0"
+                        android:padding="8dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerInside"
+                        style="@style/Base.Widget.AppCompat.Button.Colored"
+                        android:src="@drawable/fa_search_light"
+                        android:contentDescription="@string/mainActivity_searchFieldSubmitDescription" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+                    <ImageButton
+                        android:id="@+id/mainActivity_speechRecognizerBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/fa_microphone_dark"
+                        android:contentDescription="@string/mainActivity_speechRecognizerBtnDescription"
+                        android:padding="8dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerInside"/>
+                    <ImageButton
+                        android:id="@+id/mainActivity_ocrBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/fa_camera_dark"
+                        android:contentDescription="@string/mainActivity_ocrBtnDescription"
+                        android:padding="8dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerInside"/>
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+
+    <!-- Logo, above anything else (margin=-h/2 to center on the edge) -->
+    <ImageView
+        android:id="@+id/mainActivity_logo"
+        android:layout_below="@+id/mainActivity_header"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/resultlist_qfp"
+        android:layout_marginTop="-50dp"
+        android:contentDescription="@string/mainActivity_logoDescription"/>
+</RelativeLayout>

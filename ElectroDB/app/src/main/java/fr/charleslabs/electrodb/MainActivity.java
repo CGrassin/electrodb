@@ -1,0 +1,142 @@
+package fr.charleslabs.electrodb;
+
+import android.animation.LayoutTransition;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.speech.RecognizerIntent;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.CycleInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.TextView;
+
+
+import fr.charleslabs.electrodb.component.ComponentsDB;
+
+public class MainActivity extends AppCompatActivity {
+    public static final String EXTRA_SEARCH_BY_NAME = "fr.charleslabs.electroDB.SEARCH_BY_NAME";
+
+    private static final int REQ_CODE_SPEECH_INPUT = 100;
+    private EditText searchField;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        //Init the db (once)
+        ComponentsDB.getInstance(getApplicationContext());
+
+        // Set views listeners
+        searchField = findViewById(R.id.mainActivity_searchField);
+        findViewById(R.id.mainActivity_searchFieldSubmit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchByName();
+            }
+        });
+        /*findViewById(R.id.mainActivity_speechRecognizerBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                speechRecognizer();
+            }
+        });*/
+        /*findViewById(R.id.mainActivity_ocrBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textRecognizer();
+            }
+        });*/
+        findViewById(R.id.mainActivity_logo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logoDialog();
+            }
+        });
+        //Edittext action
+        ((EditText) findViewById(R.id.mainActivity_searchField)).setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                return searchByName();
+            }
+        });
+
+        //Animate keyboard
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            ViewGroup layout = findViewById(R.id.mainActivity_form);
+            LayoutTransition layoutTransition = layout.getLayoutTransition();
+            layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
+
+            layout = findViewById(R.id.mainActivity_root);
+            layoutTransition = layout.getLayoutTransition();
+            layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
+
+            layout = findViewById(R.id.mainActivity_header);
+            layoutTransition = layout.getLayoutTransition();
+            layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
+        }
+    }
+
+    private boolean searchByName() {
+        // Perform search
+        String searchTerm = searchField.getText().toString();
+        if (!searchTerm.isEmpty()){
+            // Hide keyboard
+            if(this.getCurrentFocus() != null)
+                ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE))
+                        .hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(),0);
+            // Start result list activity
+            Intent intent = new Intent(this, ResultListActivity.class);
+            intent.putExtra(EXTRA_SEARCH_BY_NAME, searchTerm);
+            startActivity(intent);
+            return true;
+        }else{
+            Animation shake = new TranslateAnimation(0,10,0,0);
+            shake.setDuration(500);
+            shake.setInterpolator(new CycleInterpolator(5));
+            searchField.startAnimation(shake);
+            return false;
+        }
+    }
+
+    /*private void speechRecognizer(){
+        Intent speechIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,
+                Locale.getDefault());
+        speechIntent.putExtra(RecognizerIntent.EXTRA_PROMPT,getString(R.string.mainActivity_recognizerIntentPrompt));
+        try {
+            startActivityForResult(speechIntent, REQ_CODE_SPEECH_INPUT);
+        }catch (ActivityNotFoundException e){
+            Toast.makeText(getApplicationContext(),getString(R.string.mainActivity_recognizerIntentError),Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void textRecognizer(){
+    }*/
+
+    @Override
+    protected void onActivityResult(int requestcode, int resultcode, Intent data){
+        super.onActivityResult(requestcode,resultcode,data);
+
+        if (requestcode==REQ_CODE_SPEECH_INPUT){
+            if(resultcode==RESULT_OK && data != null){
+                searchField.setText(data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0));
+            }
+        }
+    }
+
+    private void logoDialog(){
+        DialogFragment dialogFragment = new AboutDialog();
+        dialogFragment.show(getSupportFragmentManager(),"tag");
+    }
+}

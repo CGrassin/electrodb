@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fr.charleslabs.electrodb.ComponentActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/componentActivity_datasheetButton"
+        android:layout_alignParentTop="true"
+        tools:context="fr.charleslabs.electrodb.ComponentActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <!-- Title card -->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardElevation="2dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <TextView
+                        android:id="@+id/componentActivity_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:textSize="22sp"
+                        tools:text="Component Name"/>
+                    <TextView
+                        android:id="@+id/componentActivity_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="Component info"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <!-- Pinout Card -->
+            <android.support.v7.widget.CardView
+                android:id="@+id/componentActivity_pinoutCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardElevation="2dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:text="@string/componentActivity_pinoutTitle"
+                        android:textSize="16sp"/>
+                    <ImageView
+                        android:id="@+id/componentActivity_pinoutPicture"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:adjustViewBounds="true"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:contentDescription="@string/component_pinout_picture" />
+                    <fr.charleslabs.electrodb.componentViews.PinoutTable
+                        android:id="@+id/componentActivity_pinoutTable"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:visibility="gone"
+                        android:shrinkColumns="1"/>
+                    <TextView
+                        android:id="@+id/componentActivity_pinoutInfoText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="italic"
+                        android:text="@string/componentActivity_pinDescription"
+                        android:visibility="gone"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <!-- Application circuit Card -->
+            <android.support.v7.widget.CardView
+                android:id="@+id/componentActivity_applicationCircuitCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardElevation="2dp"
+                android:visibility="gone">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:text="@string/componentActivity_application_circuit"
+                        android:textSize="16sp" />
+                    <ImageView
+                        android:id="@+id/componentActivity_applicationCircuit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/application_circuit_picture" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Datasheet button  -->
+    <Button
+        android:id="@+id/componentActivity_datasheetButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        tools:text="Datasheet"/>
+</RelativeLayout>

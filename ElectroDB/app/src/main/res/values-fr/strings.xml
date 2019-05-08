@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ElectroDB</string>
+    <string name="resultListActivity_toastError">Erreur : aucun terme de recherche trouvé!</string>
+    <string name="resultListActivity_noResultButton">Chercher sur le web</string>
+    <string name="resultListActivity_noResult">Désolé, aucun résultat pour cette recherche :(</string>
+    <string name="resultListActivity_logo">Logo du composant</string>
+    <string name="resultListActivity_errorDB">Désolé, impossible d\'acceder à la base de données :(</string>
+    <string name="resultActivity_Title">Recherche de \"%1$s\"</string>
+    <string name="mainActivity_speechRecognizerBtnDescription">Bouton de reconnaissance vocale</string>
+    <string name="mainActivity_searchForComponent">Rechercher</string>
+    <string name="mainActivity_searchFieldSubmitDescription">Bouton de recherche</string>
+    <string name="mainActivity_recognizerIntentPrompt">Dire le nom du composant…</string>
+    <string name="mainActivity_recognizerIntentError">Oops, il semble que votre appareil ne supporte pas la reconnaissance vocale!</string>
+    <string name="mainActivity_ocrBtnDescription">Bouton de reconnaissance d\'image</string>
+    <string name="mainActivity_logoDescription">Logo</string>
+    <string name="aboutDialog_okBtn">OK</string>
+    <string name="aboutDialog_title">A propos d\'ElectroDB</string>
+    <string name="aboutDialog_websiteBtn">Voir le site</string>
+    <string name="application_circuit_picture">Image du circuit d\'exemple</string>
+    <string name="componentActivity_application_circuit">Circuit d\'exemple</string>
+    <string name="componentActivity_componentCategory"><b>Categorie</b>: </string>
+    <string name="componentActivity_componentDescription"><b>Description</b>: </string>
+    <string name="componentActivity_componentPackage"><b>Package</b>: </string>
+    <string name="componentActivity_datasheet">Datasheet</string>
+    <string name="componentActivity_googleDatasheet">Chercher sur google…</string>
+    <string name="componentActivity_pinoutTitle">Brochage</string>
+    <string name="component_pinout_picture">Image du brochage</string>
+    <string name="mainActivity_componentName">Nom du composant…</string>
+    <string name="componentActivity_pinDescription">
+        Le format d\'une pin est <b>X:Nom</b> avec X: I=input, O=output, B=bidirectional, T=tristate,
+        P=passive, U=unspecified, W=power in, w=power out, C=open collector, E=open emitter ou N=not connected.
+    </string>
+    <string name="aboutDialog_message">
+        ElectroDB créé par <b>Charles GRASSIN</b> sous licence libre GPLv2.
+    </string>
+</resources>

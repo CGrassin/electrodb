@@ -1,0 +1,41 @@
+<resources>
+    <!-- Global -->
+    <string name="app_name">ElectroDB</string>
+    <!-- Main Activity -->
+    <string name="mainActivity_componentName">Enter component name…</string>
+    <string name="mainActivity_searchForComponent">Search</string>
+    <string name="mainActivity_recognizerIntentPrompt">Say component name…</string>
+    <string name="mainActivity_recognizerIntentError">Oops, it seems that your device does not support speech recognition!</string>
+    <!-- ResultList Activity -->
+    <string name="resultListActivity_noResult">Sorry, no result for this search :(</string>
+    <string name="resultListActivity_noResultButton">Search on the web</string>
+    <string name="resultActivity_Title">Search for "%1$s"</string>
+    <!-- Component Activity -->
+    <string name="componentActivity_componentDescription"><b>Description</b>: </string>
+    <string name="componentActivity_componentPackage"><b>Package</b>: </string>
+    <string name="componentActivity_componentCategory"><b>Category</b>: </string>
+    <string name="componentActivity_pinoutTitle">Pinout</string>
+    <string name="componentActivity_pinDescription">
+        Pin format is <b>X:Name</b> where X is I=input, O=output, B=bidirectional, T=tristate,
+        P=passive, U=unspecified, W=power in, w=power out, C=open collector, E=open emitter or N=not connected.
+    </string>
+    <string name="componentActivity_application_circuit">Application circuit</string>
+    <string name="componentActivity_datasheet">Datasheet</string>
+    <string name="componentActivity_googleDatasheet">Google component datasheet…</string>
+    <string name="component_pinout_picture">Component pinout picture</string>
+    <string name="application_circuit_picture">Application circuit picture</string>
+    <!-- About Dialog Fragment -->
+    <string name="aboutDialog_title">About ElectroDB</string>
+    <string name="aboutDialog_message">
+        ElectroDB created by <b>Charles GRASSIN</b> under GPLv2 (free, open-source) licence.
+    </string>
+    <string name="aboutDialog_okBtn">OK</string>
+    <string name="aboutDialog_websiteBtn">Visit Website</string>
+    <string name="mainActivity_searchFieldSubmitDescription">Search button</string>
+    <string name="mainActivity_speechRecognizerBtnDescription">Speech recognition button</string>
+    <string name="mainActivity_ocrBtnDescription">OCR button</string>
+    <string name="mainActivity_logoDescription">Logo</string>
+    <string name="resultListActivity_toastError">Error : no search term provided!</string>
+    <string name="resultListActivity_errorDB">Couldn\'t access database, sorry :(</string>
+    <string name="resultListActivity_logo">Logo of component</string>
+</resources>

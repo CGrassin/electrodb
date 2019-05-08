@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/resultList_componentPicture"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        tools:background="#AAA"
+        android:contentDescription="@string/resultListActivity_logo" />
+
+    <TextView
+        android:id="@+id/resultList_ComponentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/resultList_componentPicture"
+        android:layout_alignTop="@+id/resultList_componentPicture"
+        android:textStyle="bold"
+        tools:text="Component name"
+        />
+
+    <TextView
+        android:id="@+id/resultList_ComponentDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/darker_gray"
+        android:layout_alignLeft="@+id/resultList_ComponentName"
+        android:layout_below="@+id/resultList_ComponentName"
+        android:maxLines="2"
+        android:ellipsize="end"
+        tools:text="Component description"
+        />
+</RelativeLayout>
