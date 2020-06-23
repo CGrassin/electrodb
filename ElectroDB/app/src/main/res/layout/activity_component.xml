@@ -21,7 +21,7 @@
             android:padding="8dp">
 
             <!-- Title card -->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -47,10 +47,10 @@
                         tools:text="Component info"
                         android:textSize="14sp"/>
                 </LinearLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!-- Pinout Card -->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/componentActivity_pinoutCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,10 +95,10 @@
                         android:visibility="gone"
                         android:textSize="12sp"/>
                 </LinearLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <!-- Application circuit Card -->
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/componentActivity_applicationCircuitCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
                         android:adjustViewBounds="true"
                         android:contentDescription="@string/application_circuit_picture" />
                 </LinearLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
 

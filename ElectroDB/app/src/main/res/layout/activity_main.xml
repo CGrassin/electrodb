@@ -43,7 +43,7 @@
         android:layout_below="@+id/mainActivity_strut"
         android:background="#DDD">
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/mainActivity_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,35 +81,8 @@
                         android:src="@drawable/fa_search_light"
                         android:contentDescription="@string/mainActivity_searchFieldSubmitDescription" />
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
-                    <ImageButton
-                        android:id="@+id/mainActivity_speechRecognizerBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:src="@drawable/fa_microphone_dark"
-                        android:contentDescription="@string/mainActivity_speechRecognizerBtnDescription"
-                        android:padding="8dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerInside"/>
-                    <ImageButton
-                        android:id="@+id/mainActivity_ocrBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:src="@drawable/fa_camera_dark"
-                        android:contentDescription="@string/mainActivity_ocrBtnDescription"
-                        android:padding="8dp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerInside"/>
-                </LinearLayout>
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
 
     <!-- Logo, above anything else (margin=-h/2 to center on the edge) -->
