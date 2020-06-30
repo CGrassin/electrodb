@@ -19,7 +19,7 @@ import fr.charleslabs.electrodb.component.ComponentsDB;
 
 public class ResultListActivity extends AppCompatActivity {
     public static final String EXTRA_COMPONENT = "fr.charleslabs.electroDB.COMPONENT";
-    private static final int NB_MAX_SEARCH_RESULT = 15;
+    private static final int NB_MAX_SEARCH_RESULT = 25;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class ResultListActivity extends AppCompatActivity {
         // Get result list
         try {
             List<Component> comps = ComponentsDB.getInstance(getApplicationContext())
-                    .searchComponentByName(nameSearch,NB_MAX_SEARCH_RESULT);
+                    .searchComponentByName(nameSearch.toUpperCase(),NB_MAX_SEARCH_RESULT);
             ComponentAdapter adapter = new ComponentAdapter(this,comps);
             resultListView.setAdapter(adapter);
         } catch (JSONException e) {

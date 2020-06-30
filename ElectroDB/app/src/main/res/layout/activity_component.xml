@@ -39,7 +39,8 @@
                         android:textStyle="bold"
                         android:textColor="@android:color/black"
                         android:textSize="22sp"
-                        tools:text="Component Name"/>
+                        tools:text="Component Name"
+                        android:gravity="center_horizontal" />
                     <TextView
                         android:id="@+id/componentActivity_info"
                         android:layout_width="match_parent"
@@ -68,8 +69,9 @@
                         android:textStyle="bold"
                         android:textColor="@android:color/black"
                         android:text="@string/componentActivity_pinoutTitle"
-                        android:textSize="16sp"/>
-                    <ImageView
+                        android:textSize="16sp"
+                        android:gravity="center_horizontal" />
+                    <com.github.chrisbanes.photoview.PhotoView
                         android:id="@+id/componentActivity_pinoutPicture"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -117,7 +119,8 @@
                         android:textStyle="bold"
                         android:textColor="@android:color/black"
                         android:text="@string/componentActivity_application_circuit"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:gravity="center_horizontal" />
                     <ImageView
                         android:id="@+id/componentActivity_applicationCircuit"
                         android:layout_width="match_parent"

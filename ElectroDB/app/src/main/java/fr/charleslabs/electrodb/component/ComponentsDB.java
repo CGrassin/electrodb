@@ -59,7 +59,7 @@ public class ComponentsDB {
         SearchResult[] results = new SearchResult[nbResults];
         for(int i=0;i<results.length;i++)
             results[i] = new SearchResult();
-        double worstScore = 0; double currentScore; int worstScoreIndex = 0;
+        double worstScore = Double.MIN_VALUE; double currentScore; int worstScoreIndex = 0;
         JSONArray jsonNames;
 
         //Loop for each component of the JSON DB
@@ -68,12 +68,12 @@ public class ComponentsDB {
 
             //Loop for each name (i.e. each actual component)
             for(int j=0;j<jsonNames.length();j++) {
-                currentScore = StringSearch.similarity(searchName,jsonNames.getString(j));
+                currentScore = StringSearch.similarity(searchName,jsonNames.getString(j).toUpperCase());
 
                 //Check if similarity is worse than the worst yet found
                 //if it is, add it instead of the worst.
                 if (currentScore > worstScore) {
-                    worstScore=1;
+                    worstScore=Double.MAX_VALUE;
                     results[worstScoreIndex].set(new Component(jsonComponents.getJSONObject(i),j), currentScore);
 
                     //Loop through the results to find the worst one (next to be replaced)

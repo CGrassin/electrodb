@@ -22,7 +22,7 @@
 # ]}
 
 BEGIN{
-	IGNORECASE = 1;
+	IGNORECASE = 0;
 	firstcomp = 0;
 	ORS=""
 	print "{\"components\":["
@@ -73,7 +73,8 @@ FNR==1 {
 /^F1 /{
 	# Reinit values
 	nameNumber = 1;
-	package = ""
+	packageF2 = ""
+	packageFP = ""
 	delete pins
 	delete names
 
@@ -92,12 +93,16 @@ FNR==1 {
 
 # PACKAGE LIST
 /^F2 /{
-	package = $2 " "
+	packageF2 = formatPackage($2,1)
+	if(packageF2 == "") packageF2 = $2
+	sub("\"~?\"", "", packageF2)
 }
 /^\$FPLIST/{
 	getline
 	while($0 != "$ENDFPLIST"){
-		package = package $1 " "
+		packtmp = formatPackage($0,0)
+		if(packageFP == "" || !(packtmp ~ packageFP))
+			packageFP = packageFP packtmp
 		getline
 	}
 }
@@ -150,7 +155,12 @@ FNR==1 {
 	print "\n\t\"category\":" "\"" category "\","
 
 	# Package
-	package = formatPackage(package);
+	package = packageFP
+	if(package=="" || !(packageF2 ~ packageFP))
+		package = packageF2 package 
+	sub(/\/$/,"",package)
+	gsub("\"","",package);
+	sub(/ $/,"",package);
 	print "\n\t\"package\":" "\"" package "\"," 
 
 	# Pins (in ascending order)
@@ -190,96 +200,73 @@ function isNumeric(stringToCheck){
 }
 
 # Function to reformat the package name depending on the housing names
-function formatPackage(packageString        ,output,packageNames,i,j){
-	output = ""
-	i=0
-
-	if (packageString == "") return "";
+function formatPackage(packageString,isF2        ,output,packageNames,i,j){
+	gsub(/\?/,"-",packageString);
+	gsub(/\*/,"-",packageString);
+	sub(/.*:/,"",packageString);
 	
 	# Generic
-	packageNames[i++]="Arduino";
-	packageNames[i++]="Nucleo";
-	packageNames[i++]="Raspberry Pi";
-	packageNames[i++]="VALVE";
-	packageNames[i++]="SMD";
+	# packageNames[i++]="Arduino";
+	# packageNames[i++]="Nucleo";
+	# packageNames[i++]="Raspberry Pi";
+	packageNames[i++]="Valve"; # Valve
+	packageNames[i++]="Display"; # Display
+	packageNames[i++]="Oscillator"; # Oscillator
 
-	packageNames[i++]="LLP";
-	packageNames[i++]="LLC";
-	packageNames[i++]="MELF";
-	packageNames[i++]="DIP";
-	packageNames[i++]="QFN";
-	packageNames[i++]="QFP";
-	packageNames[i++]="MLF";
+	# CSP
+	packageNames[i++]="WLCSP"; # QFN
+	packageNames[i++]="LFCSP"; # QFN
+	packageNames[i++]="PLCC"; # QFP
+	packageNames[i++]="MLPQ"; # QFN
+	packageNames[i++]="LLP"; # QFN
+	packageNames[i++]="LLC"; # QFN
+	packageNames[i++]="DIP"; # DIP
+	packageNames[i++]="SIP"; # DIP
+	packageNames[i++]="QFP"; # QFP
+	packageNames[i++]="UQFN"; # QFN
+	packageNames[i++]="DFN"; # QFN
+	packageNames[i++]="QFN"; # QFN
+	packageNames[i++]="SON"; # QFN
+	packageNames[i++]="MLF"; # QFN
 
-	# SOT
-	packageNames[i++]="SOT23";
-	packageNames[i++]="SOT323";
-	packageNames[i++]="SOT416";
-	packageNames[i++]="SOT353";
-	packageNames[i++]="SOT363";
-	packageNames[i++]="SOT143";
-	packageNames[i++]="SOT343";
-	packageNames[i++]="SOT490";
-	packageNames[i++]="SOT89";
-	packageNames[i++]="SOT223";
-	packageNames[i++]="SOT";
-
-	
-	# Small Outline
-	packageNames[i++]="SSOP";
-	packageNames[i++]="SOIC";
-	packageNames[i++]="SOP";
-	packageNames[i++]="SOD";
-	packageNames[i++]="SO";
+	# SOT/TO/SC
+	packageNames[i++]="SOT-[0-9]+"; # SOT 23
+	packageNames[i++]="TO-[0-9]+";
+	packageNames[i++]="SC-[0-9]+";
 	
 	# Array
-	packageNames[i++]="LGA";
-	packageNames[i++]="BGA";
-	packageNames[i++]="PGA";
+	packageNames[i++]="LGA"; # BGA
+	packageNames[i++]="BGA"; # BGA
+	packageNames[i++]="PGA"; # BGA
 
-	#TO
-	packageNames[i++]="TO-3";
-	packageNames[i++]="TO-5";
-	packageNames[i++]="TO-18";
-	packageNames[i++]="TO-39";
-	packageNames[i++]="TO-46";
-	packageNames[i++]="TO-66";
-	packageNames[i++]="TO-92";
-	packageNames[i++]="TO-99";
-	packageNames[i++]="TO-100";
-	packageNames[i++]="TO-126";
-	packageNames[i++]="TO-220";
-	packageNames[i++]="TO-226";
-	packageNames[i++]="TO-247";
-	packageNames[i++]="TO-251";
-	packageNames[i++]="TO-252";
-	packageNames[i++]="TO-262";
-	packageNames[i++]="TO-263";
-	packageNames[i++]="TO-274";
-	packageNames[i++]="TO";
+	# Diodes
+	packageNames[i++]="MELF"; # SMD
+	packageNames[i++]="SMA"; # SMD
+	packageNames[i++]="SMB"; # SMD
+	packageNames[i++]="SMC"; # SMD
+	packageNames[i++]="SOD"; # SMD
 
-	# Special cases: MCU modules
-	if(packageString ~ "STLink") packageString = "Nucleo"
-	if(packageString ~ "*SODIMM*") packageString = "Raspberry Pi"
-	if(packageString ~ "WEMOS" || 
-		packageString ~ "BeagleBoard" || 
-		packageString ~ "Maple_Mini" || 
-		packageString ~ "Onion_Omega" ||
-		packageString ~ "NEXTTHINGCO") packageString = "Arduino"
+	# Small Outline
+	packageNames[i++]="TSSOP"; # SO
+	packageNames[i++]="HTSOP"; # SO
+	packageNames[i++]="VSSOP"; # SO
+	packageNames[i++]="TSOP"; # SO
+	packageNames[i++]="SSOP"; # SO
+	packageNames[i++]="MSOP"; # SO
+	packageNames[i++]="SOIC"; # SO
+	packageNames[i++]="SOP"; # SO
+	packageNames[i++]="SO"; # SO
+
+	
+	#packageNames[i++]="SMD";
 
 	for(j=0;j<i;j++){
+		if(isF2)
+			packageNames[j] = packageNames[j] "(-[0-9]+)?"
 		if(packageString ~ packageNames[j]){
-			output=output packageNames[j] "/"
-			gsub(packageNames[j],"",packageString)
+			return gensub(".*(" packageNames[j] ").*","\\1","g",packageString) "/"
 		}
 	}
-	sub(/\/$/,"",output)
-
-	if (output == "") {
-		gsub("\"","",packageString);
-		sub(/ $/,"",packageString);
-		return packageString;
-	}
-	else
-		return output
+	
+	return "";
 }

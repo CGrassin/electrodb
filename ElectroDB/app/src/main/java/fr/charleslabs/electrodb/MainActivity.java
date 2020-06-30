@@ -43,18 +43,6 @@ public class MainActivity extends AppCompatActivity {
                 searchByName();
             }
         });
-        /*findViewById(R.id.mainActivity_speechRecognizerBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                speechRecognizer();
-            }
-        });*/
-        /*findViewById(R.id.mainActivity_ocrBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textRecognizer();
-            }
-        });*/
         findViewById(R.id.mainActivity_logo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,23 +94,6 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     }
-
-    /*private void speechRecognizer(){
-        Intent speechIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,
-                Locale.getDefault());
-        speechIntent.putExtra(RecognizerIntent.EXTRA_PROMPT,getString(R.string.mainActivity_recognizerIntentPrompt));
-        try {
-            startActivityForResult(speechIntent, REQ_CODE_SPEECH_INPUT);
-        }catch (ActivityNotFoundException e){
-            Toast.makeText(getApplicationContext(),getString(R.string.mainActivity_recognizerIntentError),Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void textRecognizer(){
-    }*/
 
     @Override
     protected void onActivityResult(int requestcode, int resultcode, Intent data){

@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.github.chrisbanes.photoview.PhotoViewAttacher;
+
 import fr.charleslabs.electrodb.component.Component;
 import fr.charleslabs.electrodb.componentViews.PinoutAutoPicture;
 import fr.charleslabs.electrodb.componentViews.PinoutTable;
@@ -21,15 +23,15 @@ public class ComponentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_component);
 
-        TextView nameView = (TextView) findViewById(R.id.componentActivity_title);
-        TextView moreInfoView = (TextView) findViewById(R.id.componentActivity_info);
-        Button datasheetButton = (Button) findViewById(R.id.componentActivity_datasheetButton);
+        TextView nameView = findViewById(R.id.componentActivity_title);
+        TextView moreInfoView = findViewById(R.id.componentActivity_info);
+        Button datasheetButton = findViewById(R.id.componentActivity_datasheetButton);
         View pinoutViewCard = findViewById(R.id.componentActivity_pinoutCard);
-        PinoutTable pinoutTable = (PinoutTable) findViewById(R.id.componentActivity_pinoutTable);
-        ImageView pinoutPicture = (ImageView) findViewById(R.id.componentActivity_pinoutPicture);
+        PinoutTable pinoutTable = findViewById(R.id.componentActivity_pinoutTable);
+        ImageView pinoutPicture = findViewById(R.id.componentActivity_pinoutPicture);
         View pinoutInfoTextView = findViewById(R.id.componentActivity_pinoutInfoText);
         View appCircuitViewCard = findViewById(R.id.componentActivity_applicationCircuitCard);
-        ImageView appCircuitView = (ImageView) findViewById(R.id.componentActivity_applicationCircuit);
+        ImageView appCircuitView = findViewById(R.id.componentActivity_applicationCircuit);
 
         Intent intent = getIntent();
         if (!intent.hasExtra(ResultListActivity.EXTRA_COMPONENT)) finish();

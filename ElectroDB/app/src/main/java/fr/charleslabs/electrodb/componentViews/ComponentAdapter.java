@@ -46,32 +46,69 @@ public class ComponentAdapter extends ArrayAdapter<Component> {
         switch (comp.getHousingType()){
             case Component.packageValve:
                 viewHolder.componentPicture.setImageResource(R.drawable.resultlist_valve); break;
-            case Component.packageDIP:
-                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_dip); break;
-            case Component.packageQFN:
-                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_qfn); break;
-            case Component.packageQFP:
-            case Component.packagePLCC:
-                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_qfp); break;
-            case Component.packageSO:
-                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_so); break;
-            case Component.packageSOT:
-                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_sot); break;
-            case Component.packageTO220:
-                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_to220); break;
-            case Component.packageTO92:
-            case Component.packageTO:
-                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_to92); break;
-            case Component.packageBGA:
-            case Component.packageLGA:
-            case Component.packagePGA:
-                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_lga); break;
+            case Component.packageDisplay:
+                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_display); break;
+            case Component.packageOscillator:
+                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_xtal); break;
+
             case Component.packageArduino:
                 viewHolder.componentPicture.setImageResource(R.drawable.resultlist_arduino); break;
             case Component.packageNucleo:
                 viewHolder.componentPicture.setImageResource(R.drawable.resultlist_nucleo); break;
             case Component.packageRaspPi:
                 viewHolder.componentPicture.setImageResource(R.drawable.resultlist_raspberry); break;
+            case Component.packageESP:
+                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_esp8266); break;
+
+            case Component.packageDIP:
+            case Component.packageSIP:
+                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_dip); break;
+
+            case Component.packageQFP:
+            case Component.packagePLCC:
+                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_qfp); break;
+
+            case Component.packageMLPQ:
+            case Component.packageCSP:
+            case Component.packageQFN:
+            case Component.packageLLP:
+            case Component.packageLLC:
+            case Component.packageSON:
+            case Component.packageDFN:
+            case Component.packageMLF:
+                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_qfn); break;
+
+            case Component.packageMELF:
+            case Component.packageSMA:
+            case Component.packageSMB:
+            case Component.packageSMC:
+            case Component.packageSOD:
+                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_smd); break;
+
+            case Component.packageSOT23:
+            case Component.packageSOT:
+                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_sot23); break;
+            case Component.packageSOT223:
+            case Component.packageSOT89:
+                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_sot223); break;
+
+            case Component.packageTO220:
+                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_to220); break;
+            case Component.packageTO92:
+            case Component.packageTO:
+                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_to92); break;
+            case Component.packageTO252:
+            case Component.packageTO263:
+                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_dpak); break;
+
+            case Component.packageSO:
+                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_so); break;
+
+            case Component.packageBGA:
+            case Component.packageLGA:
+            case Component.packagePGA:
+                viewHolder.componentPicture.setImageResource(R.drawable.resultlist_lga); break;
+
             default:
                 viewHolder.componentPicture.setImageResource(R.drawable.resultlist_unknown);
         }

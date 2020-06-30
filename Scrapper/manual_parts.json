@@ -63,6 +63,22 @@
 	"pins":[]
 },
 {
+	"names":["Teensy 4.1"],
+	"descriptions":["The Teensy 4.1 is the newest iteration of the astoundingly popular development platform that features an ARM Cortex-M7 processor at 600MHz, with a NXP iMXRT1062 chip, four times larger flash memory than the 4.0, and two new locations to optionally add more memory."],
+	"datasheets":["https://www.pjrc.com/store/teensy41.html"],
+	"category":"Arduino",
+	"package":"Arduino",
+	"pins":[]
+},
+{
+	"names":["Teensy 4.0"],
+	"descriptions":["Teensy 4.0 features an ARM Cortex-M7 processor at 600MHz, with a NXP iMXRT1062 chip, the fastest microcontroller available today."],
+	"datasheets":["https://www.pjrc.com/store/teensy40.html"],
+	"category":"Arduino",
+	"package":"Arduino",
+	"pins":[]
+},
+{
 	"names":["Teensy 3.2"],
 	"descriptions":["Microcontroller board based on ARM Cortex-M4 processor at 72 MHz, 256K Flash, 64K RAM, 12 bit analog input & output, hardware Serial, SPI & I2C, USB, and a total of 34 I/O pins"],
 	"datasheets":["https://www.pjrc.com/teensy/teensy31.html"],
@@ -193,10 +209,42 @@
 {
 	"names":["WeMos D1 mini"],
 	"descriptions":["32-bit microcontroller module with WiFi"],
-	"datasheets":["https://wiki.wemos.cc/products:d1:d1_mini#documentation"],
+	"datasheets":["https://docs.zerynth.com/latest/official/board.zerynth.wemos_d1_mini/docs/index.html"],
+	"category":"MCU_Module",
+	"package":"ESP8266",
+	"pins":[{"1":"I:~RST"},{"2":"I:A0"},{"3":"B:D0"},{"4":"B:SCK/D5"},{"5":"B:MISO/D6"},{"6":"B:MOSI/D7"},{"7":"B:CS/D8"},{"8":"w:3V3"},{"9":"W:5V"},{"10":"W:GND"},{"11":"B:D4"},{"12":"B:D3"},{"13":"B:SDA/D2"},{"14":"B:SCL/D1"},{"15":"I:RX"},{"16":"O:TX"}]
+},
+{
+	"names":["ESP8266-01"],
+	"descriptions":["32-bit microcontroller module with WiFi"],
+	"datasheets":["http://www.microchip.ua/wireless/esp01.pdf"],
+	"category":"MCU_Module",
+	"package":"ESP8266",
+	"pins":[]
+},
+{
+	"names":["ESP32"],
+	"descriptions":["32-bit microcontroller module with WiFi and Bluetooth"],
+	"datasheets":["https://www.espressif.com/en/products/socs/esp32/overview"],
+	"category":"MCU_Module",
+	"package":"ESP8266",
+	"pins":[]
+},
+{
+	"names":["NodeMCU ESP8266"],
+	"descriptions":["32-bit microcontroller module with WiFi"],
+	"datasheets":["https://components101.com/development-boards/nodemcu-esp8266-pinout-features-and-datasheet"],
+	"category":"MCU_Module",
+	"package":"ESP8266",
+	"pins":[]
+},
+{
+	"names":["STM32 Blue Pill"],
+	"descriptions":["The Blue Pill is a development board based on ST Microelectronics’ STM32F103C9T6 microcontroller that has an ARM Cortex-M3 core that runs at 72MHz max."],
+	"datasheets":["https://components101.com/microcontrollers/stm32f103c8t8-blue-pill-development-board"],
 	"category":"MCU_Module",
 	"package":"Arduino",
-	"pins":[{"1":"I:~RST"},{"2":"I:A0"},{"3":"B:D0"},{"4":"B:SCK/D5"},{"5":"B:MISO/D6"},{"6":"B:MOSI/D7"},{"7":"B:CS/D8"},{"8":"w:3V3"},{"9":"W:5V"},{"10":"W:GND"},{"11":"B:D4"},{"12":"B:D3"},{"13":"B:SDA/D2"},{"14":"B:SCL/D1"},{"15":"I:RX"},{"16":"O:TX"}]
+	"pins":[]
 },
 {
 	"names":["Adafruit HUZZAH ESP8266 breakout"],

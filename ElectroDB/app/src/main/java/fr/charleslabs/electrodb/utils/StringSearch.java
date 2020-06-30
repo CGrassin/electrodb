@@ -6,19 +6,20 @@ public class StringSearch {
      * Calculates the similarity (a number within 0 and 1) between two strings.
      */
     public static double similarity(String s1, String s2) {
-        String longer = s1, shorter = s2;
+        /*String longer = s1, shorter = s2;
         if (s1.length() < s2.length()) { // longer should always have greater length
             longer = s2; shorter = s1;
         }
         int longerLength = longer.length();
-        if (longerLength == 0) { return 1.0; /* both strings are zero length */ }
-        return (longerLength - editDistance(longer, shorter)) / (double) longerLength;
-
+        if (longerLength == 0) { return 1.0;}
+        //return (longerLength - editDistance(longer, shorter)) / (double) longerLength;
+        return ( longerLength -  editDistance(longer, shorter)) ;*/
+        return JaroWinklerScore.compute(s1,s2);
     }
 
     // Example implementation of the Levenshtein Edit Distance
     // See http://rosettacode.org/wiki/Levenshtein_distance#Java
-    private static int editDistance(String s1, String s2) {
+    /*private static int editDistance(String s1, String s2) {
         s1 = s1.toLowerCase();
         s2 = s2.toLowerCase();
 
@@ -43,6 +44,6 @@ public class StringSearch {
                 costs[s2.length()] = lastValue;
         }
         return costs[s2.length()];
-    }
+    }*/
 
 }
