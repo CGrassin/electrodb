@@ -86,6 +86,9 @@ public class ComponentAdapter extends ArrayAdapter<Component> {
                 viewHolder.componentPicture.setImageResource(R.drawable.resultlist_smd); break;
 
             case Component.packageSOT23:
+            case Component.packageSOT323:
+            case Component.packageSOT416:
+            case Component.packageSOT353:
             case Component.packageSOT:
                 viewHolder.componentPicture.setImageResource(R.drawable.resultlist_sot23); break;
             case Component.packageSOT223:

@@ -45,6 +45,9 @@ public class Component implements Serializable{
     public static final String packageSOD  = "SOD" ;
 
     // SOT
+    public static final String packageSOT323 = "SOT-323";
+    public static final String packageSOT416 = "SOT-416";
+    public static final String packageSOT353 = "SOT-353";
     public static final String packageSOT23 = "SOT-23";
     public static final String packageSOT223 = "SOT-223";
     public static final String packageSOT89 = "SOT-89";
@@ -90,6 +93,9 @@ public class Component implements Serializable{
             packageSMC,
             packageSOD,
             packageSOT23,
+            packageSOT353,
+            packageSOT416,
+            packageSOT323,
             packageSOT223,
             packageSOT89,
             packageSOT,

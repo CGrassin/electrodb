@@ -42,7 +42,15 @@ public class PinoutAutoPicture {
                 case Component.packageTO263:
                     return generate3PinsChip(context, pins, nbPins, component.getHousingType());
                 case Component.packageSOT23:
-                    return generateSOTChip(context, pins, nbPins);
+                case Component.packageSOT323:
+                case Component.packageSOT416:
+                case Component.packageSOT353:
+                    if (nbPins <= 3)
+                        return generateSOT233Chip(context,pins);
+                    else if (nbPins > 6)
+                        return generateDipSoChip(context,pins,nbPins,component.getHousingType());
+                    else
+                        return generateSOTChip(context, pins, nbPins);
                 case Component.packageMELF:
                 case Component.packageSMA:
                 case Component.packageSMB:
@@ -51,7 +59,10 @@ public class PinoutAutoPicture {
                     return generate2PinsChip(context, pins, nbPins, component.getHousingType());
                 case Component.packageQFP:
                 case Component.packageQFN:
-                    return generateQFP(context, pins, nbPins, component.getHousingType());
+                    if (nbPins <= 100)
+                        return generateQFP(context, pins, nbPins, component.getHousingType());
+                    else
+                        return null;
                 default:
                     return null;
             }
@@ -305,11 +316,6 @@ public class PinoutAutoPicture {
     }
 
     private static Bitmap generateSOTChip(Context context, TreeMap<Integer,String> pins,int nbPins) {
-        if (nbPins <= 3)
-            return generateSOT233Chip(context,pins);
-        else if (nbPins > 6)
-            return null;
-
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inScaled = false;
 
@@ -420,14 +426,28 @@ public class PinoutAutoPicture {
 
         //Load resources
         Bitmap bmpTop,bmpMid,bmpBot;
-        if (pkg.equals(Component.packageDIP)){
-            bmpTop= BitmapFactory.decodeResource(context.getResources(), R.drawable.autopinout_diptop, options);
-            bmpMid= BitmapFactory.decodeResource(context.getResources(), R.drawable.autopinout_dipmid, options);
-            bmpBot= BitmapFactory.decodeResource(context.getResources(), R.drawable.autopinout_dipbot, options);
-        }else{
-            bmpTop= BitmapFactory.decodeResource(context.getResources(), R.drawable.autopinout_sotop, options);
-            bmpMid= BitmapFactory.decodeResource(context.getResources(), R.drawable.autopinout_somid, options);
-            bmpBot= BitmapFactory.decodeResource(context.getResources(), R.drawable.autopinout_sobot, options);
+        switch(pkg){
+            case Component.packageDIP:
+                bmpTop= BitmapFactory.decodeResource(context.getResources(), R.drawable.autopinout_diptop, options);
+                bmpMid= BitmapFactory.decodeResource(context.getResources(), R.drawable.autopinout_dipmid, options);
+                bmpBot= BitmapFactory.decodeResource(context.getResources(), R.drawable.autopinout_dipbot, options);
+                break;
+            case Component.packageSO:
+            case Component.packageDFN:
+                bmpTop= BitmapFactory.decodeResource(context.getResources(), R.drawable.autopinout_sotop, options);
+                bmpMid= BitmapFactory.decodeResource(context.getResources(), R.drawable.autopinout_somid, options);
+                bmpBot= BitmapFactory.decodeResource(context.getResources(), R.drawable.autopinout_sobot, options);
+                break;
+            case Component.packageSOT23:
+            case Component.packageSOT323:
+            case Component.packageSOT416:
+            case Component.packageSOT353:
+                bmpTop= BitmapFactory.decodeResource(context.getResources(), R.drawable.autopinout_sot23_top, options);
+                bmpMid= BitmapFactory.decodeResource(context.getResources(), R.drawable.autopinout_sot23_mid, options);
+                bmpBot= BitmapFactory.decodeResource(context.getResources(), R.drawable.autopinout_sot23_bot, options);
+                break;
+            default:
+                return null;
         }
         int bmpWidth = bmpMid.getWidth(), bmpHeight = bmpMid.getHeight();
 
