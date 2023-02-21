@@ -68,7 +68,6 @@ public class JaroWinklerScore {
             return score;
         }
         // we already have a good match, hence we boost the score proportional to the common prefix
-        double boostedScore = score + prefixMatch * 0.1 * (1.0 - score);
-        return boostedScore;
+        return score + prefixMatch * 0.1 * (1.0 - score);
     }
 }

@@ -58,19 +58,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Animate keyboard
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            ViewGroup layout = findViewById(R.id.mainActivity_form);
-            LayoutTransition layoutTransition = layout.getLayoutTransition();
-            layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
+        ViewGroup layout = findViewById(R.id.mainActivity_form);
+        LayoutTransition layoutTransition = layout.getLayoutTransition();
+        layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
 
-            layout = findViewById(R.id.mainActivity_root);
-            layoutTransition = layout.getLayoutTransition();
-            layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
+        layout = findViewById(R.id.mainActivity_root);
+        layoutTransition = layout.getLayoutTransition();
+        layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
 
-            layout = findViewById(R.id.mainActivity_header);
-            layoutTransition = layout.getLayoutTransition();
-            layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
-        }
+        layout = findViewById(R.id.mainActivity_header);
+        layoutTransition = layout.getLayoutTransition();
+        layoutTransition.enableTransitionType(LayoutTransition.CHANGING);
     }
 
     private boolean searchByName() {

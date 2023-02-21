@@ -109,12 +109,12 @@ public class Component implements Serializable{
             packagePGA,
             packageSO};
 
-    private String name;
-    private String description;
-    private String datasheet;
-    private String category;
-    private String housing;
-    private TreeMap<String,String> pins;
+    private final String name;
+    private final String description;
+    private final String datasheet;
+    private final String category;
+    private final String housing;
+    private final TreeMap<String,String> pins;
 
     /**
      * Constructor of a component object from a JSONObject.

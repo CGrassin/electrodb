@@ -38,4 +38,5 @@
     <string name="resultListActivity_toastError">Error : no search term provided!</string>
     <string name="resultListActivity_errorDB">Couldn\'t access database, sorry :(</string>
     <string name="resultListActivity_logo">Logo of component</string>
+    <string name="aboutDialog_website_url" translatable="false">https://www.charleslabs.fr</string>
 </resources>

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.Map;
 import java.util.TreeMap;
 
+import fr.charleslabs.electrodb.R;
 import fr.charleslabs.electrodb.component.Component;
 
 public class PinoutTable extends TableLayout {
@@ -24,7 +25,7 @@ public class PinoutTable extends TableLayout {
         super(context, attrs);
     }
 
-    public void setComponent(Component conponent){this.component = conponent;}
+    public void setComponent(Component component){this.component = component;}
 
     public void draw(){
         TableRow row;
@@ -57,8 +58,8 @@ public class PinoutTable extends TableLayout {
         cell.setText(text);
         cell.setPadding(hPad,vPad,hPad,vPad);
         cell.setBackgroundColor(Color.WHITE);
-        cell.setBackgroundResource(getContext().getResources()
-                .getIdentifier("cell_shape","drawable",getContext().getPackageName()));
+        cell.setBackgroundResource(R.drawable.cell_shape);
+
         return cell;
     }
 }

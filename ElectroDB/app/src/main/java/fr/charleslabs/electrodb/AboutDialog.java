@@ -27,7 +27,7 @@ public class AboutDialog extends DialogFragment {
                 .setNegativeButton(getText(R.string.aboutDialog_websiteBtn), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent= new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.charleslabs.fr"));
+                        Intent intent= new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.aboutDialog_website_url)));
                         startActivity(intent);
                     }
                 })

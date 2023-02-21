@@ -1,12 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 33
     defaultConfig {
         applicationId "fr.charleslabs.electrodb"
         minSdkVersion 16
-        targetSdkVersion 29
+        targetSdkVersion 33
         versionCode 6
         versionName "2.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -18,13 +17,14 @@ android {
     }
     productFlavors {
     }
+    namespace 'fr.charleslabs.electrodb'
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.github.chrisbanes:PhotoView:2.0.0'
 }
