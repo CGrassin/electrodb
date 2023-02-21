@@ -63,6 +63,14 @@
 	"pins":[]
 },
 {
+	"names":["BBC micro bit V1","BBC micro bit V2"],
+	"descriptions":["The BBC micro:bit is a pocket-sized computer that introduces you to how software and hardware work together.","The BBC micro:bit is a pocket-sized computer that introduces you to how software and hardware work together."],
+	"datasheets":["https://microbit.org/get-started/user-guide/overview/","https://microbit.org/get-started/user-guide/overview/"],
+	"category":"Arduino",
+	"package":"Arduino",
+	"pins":[]
+},
+{
 	"names":["Teensy 4.1"],
 	"descriptions":["The Teensy 4.1 is the newest iteration of the astoundingly popular development platform that features an ARM Cortex-M7 processor at 600MHz, with a NXP iMXRT1062 chip, four times larger flash memory than the 4.0, and two new locations to optionally add more memory."],
 	"datasheets":["https://www.pjrc.com/store/teensy41.html"],
@@ -114,6 +122,14 @@
 	"names":["Raspberry Pi Zero"],
 	"descriptions":["Single-board computer with ARM11 Broadcom BCM2835 (Single-core 1GHz), 512MB RAM, 65.0mm x 31.0mm x 5.0mm"],
 	"datasheets":["https://cdn-learn.adafruit.com/downloads/pdf/introducing-the-raspberry-pi-zero.pdf"],
+	"category":"Raspberry Pi",
+	"package":"Raspberry Pi",
+	"pins":[]
+},
+{
+	"names":["Raspberry Pi Pico"],
+	"descriptions":["RP2040 features a dual-core Arm Cortex-M0+ processor with 264kB internal RAM and support for up to 16MB of off-chip flash."],
+	"datasheets":["https://www.raspberrypi.com/products/raspberry-pi-pico/","https://www.raspberrypi.com/products/raspberry-pi-pico/"],
 	"category":"Raspberry Pi",
 	"package":"Raspberry Pi",
 	"pins":[]
