@@ -23,8 +23,6 @@ import fr.charleslabs.electrodb.component.ComponentsDB;
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_SEARCH_BY_NAME = "fr.charleslabs.electroDB.SEARCH_BY_NAME";
-
-    private static final int REQ_CODE_SPEECH_INPUT = 100;
     private EditText searchField;
 
     @Override
@@ -90,17 +88,6 @@ public class MainActivity extends AppCompatActivity {
             shake.setInterpolator(new CycleInterpolator(5));
             searchField.startAnimation(shake);
             return false;
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestcode, int resultcode, Intent data){
-        super.onActivityResult(requestcode,resultcode,data);
-
-        if (requestcode==REQ_CODE_SPEECH_INPUT){
-            if(resultcode==RESULT_OK && data != null){
-                searchField.setText(data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0));
-            }
         }
     }
 

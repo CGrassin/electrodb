@@ -1,49 +1,53 @@
 package fr.charleslabs.electrodb.utils;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import me.xdrop.diffutils.DiffUtils;
+import me.xdrop.diffutils.structs.MatchingBlock;
+
 //Thanks to acdcjunior on https://stackoverflow.com/questions/955110/similarity-string-comparison-in-java
 public class StringSearch {
     /**
-     * Calculates the similarity (a number within 0 and 1) between two strings.
+     * Calculates the similarity (a number within 0 and 100) between two strings.
+     * From: https://github.com/xdrop/fuzzywuzzy
      */
-    public static double similarity(String s1, String s2) {
-        /*String longer = s1, shorter = s2;
-        if (s1.length() < s2.length()) { // longer should always have greater length
-            longer = s2; shorter = s1;
+    public static int partialRatio(String s1, String s2) {
+        String shorter;
+        String longer;
+
+        if (s1.length() <= s2.length()) {
+            shorter = s1;
+            longer = s2;
+        } else {
+            shorter = s2;
+            longer = s1;
         }
-        int longerLength = longer.length();
-        if (longerLength == 0) { return 1.0;}
-        //return (longerLength - editDistance(longer, shorter)) / (double) longerLength;
-        return ( longerLength -  editDistance(longer, shorter)) ;*/
-        return JaroWinklerScore.compute(s1,s2);
-    }
 
-    // Example implementation of the Levenshtein Edit Distance
-    // See http://rosettacode.org/wiki/Levenshtein_distance#Java
-    /*private static int editDistance(String s1, String s2) {
-        s1 = s1.toLowerCase();
-        s2 = s2.toLowerCase();
+        MatchingBlock[] matchingBlocks = DiffUtils.getMatchingBlocks(shorter, longer);
 
-        int[] costs = new int[s2.length() + 1];
-        for (int i = 0; i <= s1.length(); i++) {
-            int lastValue = i;
-            for (int j = 0; j <= s2.length(); j++) {
-                if (i == 0)
-                    costs[j] = j;
-                else {
-                    if (j > 0) {
-                        int newValue = costs[j - 1];
-                        if (s1.charAt(i - 1) != s2.charAt(j - 1))
-                            newValue = Math.min(Math.min(newValue, lastValue),
-                                    costs[j]) + 1;
-                        costs[j - 1] = lastValue;
-                        lastValue = newValue;
-                    }
-                }
+        List<Double> scores = new ArrayList<>();
+
+        for (MatchingBlock mb : matchingBlocks) {
+            int dist = mb.dpos - mb.spos;
+
+            int long_start = Math.max(dist, 0);
+            int long_end = long_start + shorter.length();
+
+            if (long_end > longer.length()) long_end = longer.length();
+
+            String long_substr = longer.substring(long_start, long_end);
+
+            double ratio = DiffUtils.getRatio(shorter, long_substr);
+
+            if (ratio > .995) {
+                return 100;
+            } else {
+                scores.add(ratio);
             }
-            if (i > 0)
-                costs[s2.length()] = lastValue;
         }
-        return costs[s2.length()];
-    }*/
 
+        return (int) Math.round(100 * Collections.max(scores));
+    }
 }

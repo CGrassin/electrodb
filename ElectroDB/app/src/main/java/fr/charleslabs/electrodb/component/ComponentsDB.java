@@ -68,7 +68,7 @@ public class ComponentsDB {
 
             //Loop for each name (i.e. each actual component)
             for(int j=0;j<jsonNames.length();j++) {
-                currentScore = StringSearch.similarity(searchName,jsonNames.getString(j).toUpperCase());
+                currentScore = StringSearch.partialRatio(searchName,jsonNames.getString(j).toUpperCase());
 
                 //Check if similarity is worse than the worst yet found
                 //if it is, add it instead of the worst.
